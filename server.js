@@ -13,8 +13,10 @@ if (process.env.NODE_ENV === "production") {
     app.use(morgan("dev"));
 }
 
-// Middleware
+// Set template Engine
 app.set("view engine", "ejs");
+// Middleware
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(PORT, () => console.log(`Server listening on port, ${PORT}.`));
