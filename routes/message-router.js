@@ -11,6 +11,6 @@ router.get("/", messageController.getIndex);
 router.get("/new-message", messageController.getNewMessage);
 
 // POST routes
-
+router.post("/new-message", messageController.postNewMessage);
 
 module.exports = router;
