@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -6,4 +12,17 @@ label,
 button,
 body {
     font-family: sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2rem 4rem;
+    background-color: #eee;
+}
+
+.header__nav__list {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
 }

@@ -22,9 +22,19 @@ async function getNewMessage(req, res, next) {
 }
 
 // POST controllers
+async function postNewMessage(req, res, next) {
+    try {
+        // INSERT INTO db
 
+        // res.redirect("/");
+
+    } catch (err) {
+        next(err);
+    }
+}
 
 module.exports = {
     getIndex,
     getNewMessage,
+    postNewMessage
 };
