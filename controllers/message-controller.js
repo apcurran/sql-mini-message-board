@@ -3,7 +3,8 @@
 // GET controllers
 async function getIndex(req, res, next) {
     try {
-        
+        res.render("index", { title: "SQL Messages Home" });
+
     } catch (err) {
         next(err)
     }
