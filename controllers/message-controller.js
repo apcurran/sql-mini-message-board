@@ -6,7 +6,16 @@ const db = require("../db/index");
 // TODO: Consolidate with route param for various pages and extract into var passed into render func
 async function getIndex(req, res, next) {
     try {
-        res.render("message/index", { title: "SQL Messages Home", topic: "general" });
+        const messages = (await db.query(`
+            SELECT
+                username,
+                content,
+                created_at
+            FROM user_message
+        `
+        )).rows;
+
+        res.render("message/index", { title: "SQL Messages Home", topic: "general", comments: messages });
 
     } catch (err) {
         next(err);
@@ -53,7 +62,8 @@ async function postNewMessage(req, res, next) {
                 (username, content, topic, created_at)
             VALUES
                 ($1, $2, $3, $4)
-        `,  [name, comment, topic, now]
+            `,
+            [name, comment, topic, now]
         );
 
         // Redirect after saving to db

@@ -10,4 +10,13 @@
         </div>
         <button class="main__form__submit-btn">Post Comment</button>
     </form>
+    <section class="main__comments">
+        <% for (let comment of comments) { %>
+            <div class="main__comments__group">
+                <h2 class="main__comments__group__header"><%= comment.username %></h2>
+                <span class="main__comments__group__date"><%= comment.created_at %></span>
+                <p class="main__comments__group__text"><%= comment.content %></p>
+            </div>
+        <% } %>
+    </section>
 </main>
