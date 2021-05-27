@@ -14,8 +14,9 @@
 h1,
 h2,
 h3,
-input,
 label,
+input,
+textarea,
 button,
 body {
     font-family: "Nunito", sans-serif;
@@ -82,13 +83,16 @@ body::before {
 }
 
 .form__group__label {
-    margin-bottom: .5rem;
+    margin-bottom: .75rem;
 }
 
 .form__group__textarea {
     max-width: var(--form-width);
     width: 100%;
-    padding: .5rem;
+    padding: 1rem;
+    line-height: 1.6;
+
+    font-size: 1rem;
     border: none;
     background-color: var(--light-grey-blue);
 }
