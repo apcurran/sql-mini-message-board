@@ -8,6 +8,7 @@
     --dark-indigo: #242b45;
     --light-grey-blue: #f7f9fd;
     --med-grey-blue: #697689;
+    --form-width: 55rem;
 }
 
 h1,
@@ -17,7 +18,7 @@ input,
 label,
 button,
 body {
-    font-family: sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
 body {
@@ -64,8 +65,10 @@ body::before {
 }
 
 .main__form {
+    max-width: var(--form-width);
     padding: 2rem;
     background-color: #fff;
+    box-shadow: 0 50px 12px -30px hsla(228 70% 54% / .15);
 }
 
 .form__group__label,
@@ -83,8 +86,9 @@ body::before {
 }
 
 .form__group__textarea {
-    max-width: 40rem;
+    max-width: var(--form-width);
     width: 100%;
+    padding: .5rem;
     border: none;
     background-color: var(--light-grey-blue);
 }
