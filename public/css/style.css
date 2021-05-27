@@ -6,6 +6,8 @@
 
 :root {
     --dark-indigo: #242b45;
+    --light-grey-blue: #f7f9fd;
+    --med-grey-blue: #697689;
 }
 
 h1,
@@ -25,6 +27,15 @@ body {
     min-height: 100vh;
 }
 
+body::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    padding: 10rem 0;
+    background-color: var(--dark-indigo);
+}
+
 /* Center column */
 .header,
 .main {
@@ -33,8 +44,7 @@ body {
 
 .header {
     padding-top: 2rem;
-    padding-bottom: 14rem;
-    background-color: var(--dark-indigo);
+    padding-bottom: 2rem;
 }
 
 .header__nav__title {
@@ -53,14 +63,30 @@ body {
     text-decoration: none;
 }
 
+.main__form {
+    padding: 2rem;
+    background-color: #fff;
+}
+
 .form__group__label,
 .form__group__textarea {
     display: block;
 }
 
+.main__form,
+.form__group__textarea {
+    border-radius: 10px;
+}
+
+.form__group__label {
+    margin-bottom: .5rem;
+}
+
 .form__group__textarea {
     max-width: 40rem;
     width: 100%;
+    border: none;
+    background-color: var(--light-grey-blue);
 }
 
 .footer {
@@ -75,4 +101,5 @@ body {
 
 .footer__title {
     font-size: .875rem;
+    color: var(--med-grey-blue);
 }
