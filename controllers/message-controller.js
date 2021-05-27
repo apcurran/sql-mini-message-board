@@ -43,15 +43,15 @@ async function getFashion(req, res, next) {
 async function postNewMessage(req, res, next) {
     try {
         const { topic } = req.query;
+        // INSERT INTO db
+        
 
+        // Redirect after saving to db
         if (topic === "general") {
             return res.redirect("/");
         }
 
         res.redirect(`/${topic}`);
-        // INSERT INTO db
-
-        // res.redirect("/");
 
     } catch (err) {
         next(err);
