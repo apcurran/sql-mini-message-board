@@ -1,6 +1,7 @@
 "use strict";
 
 const db = require("../db/index");
+const { formatDate } = require("../utility/format-date");
 
 // GET controllers
 // TODO: Consolidate with route param for various pages and extract into var passed into render func
@@ -14,8 +15,14 @@ async function getIndex(req, res, next) {
             FROM user_message
         `
         )).rows;
+        const messagesWithFormattedDates = messages.map(message => {
+            return {
+                ...message,
+                created_at: formatDate(message.created_at)
+            };
+        });
 
-        res.render("message/index", { title: "SQL Messages Home", topic: "general", comments: messages });
+        res.render("message/index", { title: "SQL Messages Home", topic: "general", comments: messagesWithFormattedDates });
 
     } catch (err) {
         next(err);

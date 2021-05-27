@@ -69,6 +69,10 @@ body::before {
     text-decoration: none;
 }
 
+.main {
+    padding-bottom: 4rem;
+}
+
 .main__form {
     max-width: var(--form-width);
     padding: 3rem 3.25rem;
@@ -90,6 +94,10 @@ body::before {
 .form__group__textarea,
 .main__form__submit-btn {
     border-radius: 10px;
+}
+
+.main__form {
+    margin-bottom: 6rem;
 }
 
 .form__group__label {
@@ -123,6 +131,23 @@ body::before {
     cursor: pointer;
     background: hsla(149, 80%, 90%, 1);
     color: hsla(163, 94%, 24%, 1);
+}
+
+.main__comments__group:not(:last-of-type) {
+    margin-bottom: 2rem;
+}
+
+.main__comments__group__name {
+    display: inline-block;
+    margin-bottom: .5rem;
+    margin-right: 1.25rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.main__comments__group__date {
+    font-size: .875rem;
+    color: var(--med-grey-blue);
 }
 
 .footer {
