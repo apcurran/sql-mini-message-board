@@ -12,15 +12,6 @@ async function getIndex(req, res, next) {
     }
 }
 
-async function getNewMessage(req, res, next) {
-    try {
-        res.render("message/new-message", { title: "Create a New Message" });
-
-    } catch (err) {
-        next(err);
-    }
-}
-
 // POST controllers
 async function postNewMessage(req, res, next) {
     try {
@@ -35,6 +26,5 @@ async function postNewMessage(req, res, next) {
 
 module.exports = {
     getIndex,
-    getNewMessage,
     postNewMessage
 };
