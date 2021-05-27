@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    --dark-indigo: #242b45;
+}
+
 h1,
 h2,
 h3,
@@ -28,14 +32,35 @@ body {
 }
 
 .header {
-    padding: 2rem 4rem;
-    background-color: #eee;
+    padding-top: 2rem;
+    padding-bottom: 14rem;
+    background-color: var(--dark-indigo);
+}
+
+.header__nav__title {
+    margin-bottom: 2rem;
 }
 
 .header__nav__list {
     display: flex;
     gap: 1.75rem;
     list-style: none;
+}
+
+.header__nav__link {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.form__group__label,
+.form__group__textarea {
+    display: block;
+}
+
+.form__group__textarea {
+    max-width: 40rem;
+    width: 100%;
 }
 
 .footer {
