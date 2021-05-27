@@ -64,6 +64,7 @@ body::before {
 
 .header__nav__link {
     color: #fff;
+    font-size: 1.125rem;
     font-weight: 700;
     text-decoration: none;
 }
