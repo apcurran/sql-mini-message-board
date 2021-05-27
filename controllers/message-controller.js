@@ -42,6 +42,13 @@ async function getFashion(req, res, next) {
 // POST controllers
 async function postNewMessage(req, res, next) {
     try {
+        const { topic } = req.query;
+
+        if (topic === "general") {
+            return res.redirect("/");
+        }
+
+        res.redirect(`/${topic}`);
         // INSERT INTO db
 
         // res.redirect("/");
