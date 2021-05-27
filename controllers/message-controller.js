@@ -3,6 +3,7 @@
 const db = require("../db/index");
 
 // GET controllers
+// TODO: Consolidate with route param for various pages and extract into var passed into render func
 async function getIndex(req, res, next) {
     try {
         res.render("message/index", { title: "SQL Messages Home", topic: "general" });
