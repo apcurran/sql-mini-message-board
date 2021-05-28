@@ -31,7 +31,7 @@ app.use((err, req, res, next) => {
     console.error(err);
 
     // TODO: Render error page
-    // return res.render()
+    // return res.status(500).render();
 });
 
 app.listen(PORT, () => console.log(`Server listening on port, ${PORT}.`));
