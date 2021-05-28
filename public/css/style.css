@@ -21,6 +21,7 @@ textarea,
 button,
 body {
     font-family: "Nunito", sans-serif;
+    color: var(--dark-indigo);
 }
 
 body {
@@ -167,4 +168,10 @@ body::before {
 .footer__title {
     font-size: .875rem;
     color: var(--med-grey-blue);
+}
+
+/* Error page */
+.main--error {
+    padding: 3rem 3.25rem;
+    background-color: #fff;
 }
