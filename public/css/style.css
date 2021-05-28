@@ -106,7 +106,7 @@ body::before {
 
 .form__group__input,
 .form__group__textarea {
-    padding: .5rem;
+    padding: .5rem .75rem;
     font-size: 1rem;
     border: none;
     background-color: var(--light-grey-blue);
@@ -116,7 +116,6 @@ body::before {
     margin-bottom: 1rem;
     max-width: var(--form-width);
     width: 100%;
-    padding: 1rem;
     line-height: 1.6;
 }
 
