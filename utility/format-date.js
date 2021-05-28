@@ -13,4 +13,15 @@ function formatDate(date) {
     return new Intl.DateTimeFormat("en-US", options).format(date);
 }
 
-module.exports = { formatDate };
+function formatMessageDates(messages) {
+    return messages.map(message => {
+        return {
+            ...message,
+            created_at: formatDate(message.created_at)
+        };
+    });
+}
+
+module.exports = {
+    formatMessageDates
+};
