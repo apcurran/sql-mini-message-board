@@ -8,6 +8,7 @@
     --dark-indigo: #242b45;
     --light-grey-blue: #f7f9fd;
     --med-grey-blue: #697689;
+    --light-green: hsla(149 80% 90% / 1);
     --form-width: 55rem;
 }
 
@@ -69,6 +70,10 @@ body::before {
     text-decoration: none;
 }
 
+.nav__link--active {
+    color: var(--light-green);
+}
+
 .main {
     padding-bottom: 4rem;
 }
@@ -128,8 +133,8 @@ body::before {
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    background: hsla(149, 80%, 90%, 1);
-    color: hsla(163, 94%, 24%, 1);
+    background: var(--light-green);
+    color: hsla(163 94% 24% / 1);
 }
 
 .main__comments__group:not(:last-of-type) {
