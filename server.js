@@ -6,18 +6,12 @@ require("dotenv").config();
 const express = require("express");
 const PORT = process.env.PORT || 5000;
 const expressLayouts = require("express-ejs-layouts");
-const morgan = require("morgan");
 const compression = require("compression");
 const helmet = require("helmet");
 // Routes
 const messageRouter = require("./routes/message-router");
 
 const app = express();
-
-// Dev logging
-if (process.env.NODE_ENV !== "production") {
-    app.use(morgan("dev"));
-}
 
 app.use(helmet());
 // Set template Engine

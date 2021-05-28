@@ -22,7 +22,5 @@
     "helmet": "^4.6.0",
     "pg": "^8.6.0"
   },
-  "devDependencies": {
-    "morgan": "^1.10.0"
-  }
+  "devDependencies": {}
 }
