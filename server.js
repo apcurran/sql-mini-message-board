@@ -7,13 +7,11 @@ const express = require("express");
 const PORT = process.env.PORT || 5000;
 const expressLayouts = require("express-ejs-layouts");
 const compression = require("compression");
-const helmet = require("helmet");
 // Routes
 const messageRouter = require("./routes/message-router");
 
 const app = express();
 
-app.use(helmet());
 // Set template Engine
 app.set("view engine", "ejs");
 app.use(expressLayouts);
