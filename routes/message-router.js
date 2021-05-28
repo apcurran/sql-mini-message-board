@@ -8,11 +8,7 @@ const messageController = require("../controllers/message-controller");
 // GET routes
 router.get("/", messageController.getIndex);
 
-router.get("/gaming", messageController.getGaming);
-
-router.get("/sports", messageController.getSports);
-
-router.get("/fashion", messageController.getFashion);
+router.get("/:category", messageController.getCategory);
 
 // POST routes
 router.post("/new-message", messageController.postNewMessage);

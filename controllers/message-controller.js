@@ -4,7 +4,6 @@ const db = require("../db/index");
 const { formatDate } = require("../utility/format-date");
 
 // GET controllers
-// TODO: Consolidate with route param for various pages and extract into var passed into render func
 async function getIndex(req, res, next) {
     try {
         const messages = (await db.query(`
@@ -13,6 +12,7 @@ async function getIndex(req, res, next) {
                 content,
                 created_at
             FROM user_message
+            WHERE topic = 'general'
         `
         )).rows;
         const messagesWithFormattedDates = messages.map(message => {
@@ -29,34 +29,32 @@ async function getIndex(req, res, next) {
     }
 }
 
-async function getGaming(req, res, next) {
+async function getCategory(req, res, next) {
     try {
-        res.render("message/index", { title: "SQL Messages Home", topic: "gaming" });
+        const { category } = req.params;
+        const messages = (await db.query(`
+            SELECT
+                username,
+                content,
+                created_at
+            FROM user_message
+            WHERE topic = $1
+        `,  [category])).rows;
+        const messagesWithFormattedDates = messages.map(message => {
+            return {
+                ...message,
+                created_at: formatDate(message.created_at)
+            };
+        });
+
+        res.render("message/index", { title: "Category page", topic: category, comments: messagesWithFormattedDates });
 
     } catch (err) {
         next(err);
     }
 }
 
-async function getSports(req, res, next) {
-    try {
-        res.render("message/index", { title: "SQL Messages Home", topic: "sports" });
-
-    } catch (err) {
-        next(err);
-    }
-}
-
-async function getFashion(req, res, next) {
-    try {
-        res.render("message/index", { title: "SQL Messages Home", topic: "fashion" });
-
-    } catch (err) {
-        next(err);
-    }
-}
-
-// POST controllers
+// // POST controllers
 async function postNewMessage(req, res, next) {
     try {
         const { name, comment } = req.body;
@@ -87,8 +85,6 @@ async function postNewMessage(req, res, next) {
 
 module.exports = {
     getIndex,
-    getGaming,
-    getSports,
-    getFashion,
+    getCategory,
     postNewMessage
 };
