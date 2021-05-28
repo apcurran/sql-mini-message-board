@@ -44,14 +44,13 @@ async function getCategory(req, res, next) {
     }
 }
 
-// // POST controllers
+// POST controllers
 async function postNewMessage(req, res, next) {
     try {
         const { name, comment } = req.body;
         const { topic } = req.query;
         const now = new Date();
 
-        // INSERT INTO db
         await db.query(`
             INSERT INTO user_message
                 (username, content, topic, created_at)
@@ -61,7 +60,6 @@ async function postNewMessage(req, res, next) {
             [name, comment, topic, now]
         );
 
-        // Redirect after saving to db
         if (topic === "general") {
             return res.redirect("/");
         }
