@@ -34,7 +34,6 @@ app.use("/", messageRouter);
 app.use((err, req, res, next) => {
     console.error(err);
 
-    // TODO: Render error page
     return res.status(500).render("error/500", { title: "Server Error", error: err.message });
 });
 
