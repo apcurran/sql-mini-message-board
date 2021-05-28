@@ -175,3 +175,34 @@ body::before {
     padding: 3rem 3.25rem;
     background-color: #fff;
 }
+
+/* Smaller devices */
+@media screen and (max-width: 62em) {
+    body {
+        grid-template-columns: 1fr 12fr 1fr;
+    }
+}
+
+@media screen and (max-width: 42.5em) {
+    body {
+        grid-template-columns: 1fr 16fr 1fr;
+    }
+
+    .main__form {
+        padding: 2rem 2.25rem;
+    }
+}
+
+@media screen and (max-width: 27.5em) {
+    .header__nav__logo {
+        width: 12rem;
+    }
+
+    .header__nav__list {
+        gap: .875rem;
+    }
+
+    .main__form {
+        padding: 1rem 1.25rem;
+    }
+}
