@@ -2,11 +2,11 @@
     <form action="/new-message?topic=<%= topic %>" method="POST" class="main__form">
         <div class="form__group">
             <label for="name" class="form__group__label">Name:</label>
-            <input class="form__group__input" type="text" name="name" id="name">
+            <input class="form__group__input" type="text" name="name" id="name" required>
         </div>
         <div class="form__group">
             <label for="comment" class="form__group__label">Comment:</label>
-            <textarea class="form__group__textarea" name="comment" id="comment" cols="30" rows="10"></textarea>
+            <textarea class="form__group__textarea" name="comment" id="comment" cols="30" rows="10" required></textarea>
         </div>
         <button class="main__form__submit-btn">Post Comment</button>
     </form>
