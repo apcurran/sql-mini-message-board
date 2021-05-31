@@ -125,6 +125,11 @@ body::before {
     line-height: 1.6;
 }
 
+.main__form__error {
+    margin-bottom: 1rem;
+    color: #b91c1c;
+}
+
 .main__form__submit-btn {
     padding: .75rem 1rem;
     border: none;

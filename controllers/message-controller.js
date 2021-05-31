@@ -51,6 +51,58 @@ async function postNewMessage(req, res, next) {
         const { topic } = req.query;
         const now = new Date();
 
+        // Validate form data
+        if (
+            name    === "" && topic === "general" ||
+            comment === "" && topic === "general"
+        ) {
+            const messages = (await db.query(`
+                SELECT
+                    username,
+                    content,
+                    created_at
+                FROM user_message
+                WHERE topic = 'general'
+            `
+            )).rows;
+            const messagesWithFormattedDates = formatMessageDates(messages);
+            const errorMsg = "All fields must be filled out before posting a comment."
+
+            return res.render("message/index", {
+                title: "SQL Board",
+                topic: "general",
+                comments: messagesWithFormattedDates,
+                error: errorMsg,
+                formFieldName: name,
+                formFieldComment: comment
+            });
+            
+        } else if (
+            name    === "" && topic !== "general" ||
+            comment === "" && topic !== "general"
+        ) {
+            const messages = (await db.query(`
+                SELECT
+                    username,
+                    content,
+                    created_at
+                FROM user_message
+                WHERE topic = $1
+            `,  [topic])).rows;
+            const messagesWithFormattedDates = formatMessageDates(messages);
+            const errorMsg = "All fields must be filled out before posting a comment."
+
+            return res.render("message/index", {
+                title: "SQL Board",
+                topic: topic,
+                comments: messagesWithFormattedDates,
+                error: errorMsg,
+                formFieldName: name,
+                formFieldComment: comment
+            });
+        }
+
+        // Validation passed, save to db
         await db.query(`
             INSERT INTO user_message
                 (username, content, topic, created_at)
