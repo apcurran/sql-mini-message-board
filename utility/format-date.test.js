@@ -34,7 +34,32 @@ test("create a new obj with the key/value pairs copied along with a newly format
             topic: "general",
             created_at: "Saturday, December 19, 2020, 9:23 PM"
         }
-    ]
+    ];
+
+    expect(formatMessageDates(fakeUserMessages)).toEqual(expectedResult);
+});
+
+test("create a new obj with the key/value pairs copied along with a newly formatted date property", () => {
+    const fakeDate = new Date(Date.UTC(2021, 5, 1, 15, 23, 16, 738));
+    const fakeUserMessages = [
+        {
+            message_id: 1,
+            username: "Ross",
+            content: "This is a Jest test.",
+            topic: "fashion",
+            created_at: fakeDate
+        }
+    ];
+
+    const expectedResult = [
+        {
+            message_id: 1,
+            username: "Ross",
+            content: "This is a Jest test.",
+            topic: "fashion",
+            created_at: "Tuesday, June 1, 2021, 10:23 AM"
+        }
+    ];
 
     expect(formatMessageDates(fakeUserMessages)).toEqual(expectedResult);
 });
