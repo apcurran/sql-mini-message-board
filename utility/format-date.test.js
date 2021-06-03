@@ -1,6 +1,6 @@
 const { formatMessageDates } = require("../utility/format-date");
 
-test("create a new obj with the key/value pairs copied along with a newly formatted date property", () => {
+test("create a new array of two objects with the key/value pairs copied along with newly formatted date properties", () => {
     const fakeDate = new Date(Date.UTC(2020, 11, 20, 3, 23, 16, 738));
     const fakeUserMessages = [
         {
@@ -39,7 +39,7 @@ test("create a new obj with the key/value pairs copied along with a newly format
     expect(formatMessageDates(fakeUserMessages)).toEqual(expectedResult);
 });
 
-test("create a new obj with the key/value pairs copied along with a newly formatted date property", () => {
+test("create a new array of one object with the key/value pairs copied along with a newly formatted date property", () => {
     const fakeDate = new Date(Date.UTC(2021, 5, 1, 15, 23, 16, 738));
     const fakeUserMessages = [
         {
