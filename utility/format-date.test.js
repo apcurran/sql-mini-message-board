@@ -25,14 +25,14 @@ test("create a new array of two objects with the key/value pairs copied along wi
             username: "Bob",
             content: "This is a Jest test.",
             topic: "general",
-            created_at: "Saturday, December 19, 2020, 9:23 PM"
+            created_at: "Saturday, December 19, 2020 at 9:23 PM"
         },
         {
             message_id: 2,
             username: "Suzy",
             content: "This is a Jest test.",
             topic: "general",
-            created_at: "Saturday, December 19, 2020, 9:23 PM"
+            created_at: "Saturday, December 19, 2020 at 9:23 PM"
         }
     ];
 
@@ -57,7 +57,7 @@ test("create a new array of one object with the key/value pairs copied along wit
             username: "Ross",
             content: "This is a Jest test.",
             topic: "fashion",
-            created_at: "Tuesday, June 1, 2021, 10:23 AM"
+            created_at: "Tuesday, June 1, 2021 at 10:23 AM"
         }
     ];
 
