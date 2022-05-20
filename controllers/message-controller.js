@@ -1,20 +1,21 @@
 "use strict";
 
-const db = require("../db/index");
+const { db } = require("../db/index");
+
 const { formatMessageDates } = require("../utility/format-date");
 
 // GET controllers
 async function getIndex(req, res, next) {
     try {
-        const messages = (await db.query(`
+        const messages = await db.manyOrNone(`
             SELECT
                 username,
                 content,
                 created_at
             FROM user_message
             WHERE topic = 'general'
-        `
-        )).rows;
+        `, []
+        );
         const messagesWithFormattedDates = formatMessageDates(messages);
 
         res.render("message/index", { title: "SQL Board", topic: "general", comments: messagesWithFormattedDates });
@@ -27,14 +28,14 @@ async function getIndex(req, res, next) {
 async function getCategory(req, res, next) {
     try {
         const { category } = req.params;
-        const messages = (await db.query(`
+        const messages = await db.manyOrNone(`
             SELECT
                 username,
                 content,
                 created_at
             FROM user_message
             WHERE topic = $1
-        `,  [category])).rows;
+        `,  [category]);
         const messagesWithFormattedDates = formatMessageDates(messages);
 
         res.render("message/index", { title: "SQL Board", topic: category, comments: messagesWithFormattedDates });
@@ -56,7 +57,7 @@ async function postNewMessage(req, res, next) {
             name    === "" && topic === "general" ||
             comment === "" && topic === "general"
         ) {
-            const messages = (await db.query(`
+            const messages = await db.manyOrNone(`
                 SELECT
                     username,
                     content,
@@ -64,7 +65,7 @@ async function postNewMessage(req, res, next) {
                 FROM user_message
                 WHERE topic = 'general'
             `
-            )).rows;
+            );
             const messagesWithFormattedDates = formatMessageDates(messages);
             const errorMsg = "All fields must be filled out before posting a comment."
 
@@ -81,14 +82,14 @@ async function postNewMessage(req, res, next) {
             name    === "" && topic !== "general" ||
             comment === "" && topic !== "general"
         ) {
-            const messages = (await db.query(`
+            const messages = await db.manyOrNone(`
                 SELECT
                     username,
                     content,
                     created_at
                 FROM user_message
                 WHERE topic = $1
-            `,  [topic])).rows;
+            `,  [topic]);
             const messagesWithFormattedDates = formatMessageDates(messages);
             const errorMsg = "All fields must be filled out before posting a comment."
 
@@ -103,7 +104,7 @@ async function postNewMessage(req, res, next) {
         }
 
         // Validation passed, save to db
-        await db.query(`
+        await db.none(`
             INSERT INTO user_message
                 (username, content, topic, created_at)
             VALUES

@@ -5,7 +5,7 @@ function formatDate(date) {
 }
 
 function formatMessageDates(messages) {
-    return messages.map(message => {
+    return messages.map((message) => {
         return {
             ...message,
             created_at: formatDate(message.created_at)
