@@ -14,7 +14,7 @@ async function getIndex(req, res, next) {
                 created_at
             FROM user_message
             WHERE topic = 'general'
-        `, []
+        `
         );
         const messagesWithFormattedDates = formatMessageDates(messages);
 
